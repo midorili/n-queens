@@ -62,7 +62,7 @@
     },
 
 
-/*
+    /*
          _             _     _
      ___| |_ __ _ _ __| |_  | |__   ___ _ __ ___ _
     / __| __/ _` | '__| __| | '_ \ / _ \ '__/ _ (_)
@@ -74,32 +74,112 @@
     =                 TODO: fill in these Helper Functions                    =
     =========================================================================*/
 
+
+
+
     // ROWS - run from left to right
     // --------------------------------------------------------------
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      //Input: Row index (number)
+      //Output: Boolean (true or false)
+      //Constraint: Within bounds
+      //Edge Case:
+      var counter = 0;
+      for (var i = 0; i < this.get(rowIndex).length; i++) {
+        if (this.get(rowIndex)[i] === 1) {
+          counter ++;
+        }
+      }
+      if (counter > 1) {
+        return true;
+      } else {
+        return false;
+      }
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+
+      var rowConflict = false;
+      for (var key in this.attributes) {
+        if (key === 'n') {
+          continue;
+        }
+        if (this.hasRowConflictAt(key)) {
+          rowConflict = true;
+        }
+      }
+      return rowConflict;
+
     },
 
-
+    /* var matrix = [
+      [0, 1, 0, 0],
+      [0, 0, 0, 0],
+      [0, 1, 0, 0],
+      [0, 0, 0, 0]
+    ]; */
 
     // COLUMNS - run from top to bottom
     // --------------------------------------------------------------
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+
+      var counter = 0;
+
+      for (var key in this.attributes) {
+        if (key === 'n') {
+          continue;
+        }
+        if (this.attributes[key][colIndex] === 1) {
+          counter++;
+        }
+      }
+      if (counter > 1) {
+        return true;
+      } else {
+        return false;
+      }
     },
 
-    // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+
+      // var storage = {};
+      // for (var key in this.attributes) {
+      //   if (key === 'n') {
+      //     continue;
+      //   }
+      //   for (var i = 0; i < this.attributes[key].length; i++) {
+      //     if (this.attributes[key][i] === 1) {
+      //       if (storage[i] === undefined) {
+      //         storage[i] = 1;
+      //       } else {
+      //         storage[i]++;
+      //       }
+      //     }
+      //   }
+      // }
+      // var counterResult = Object.values(storage);
+      // for (var j = 0; j < counterResult.length; j++) {
+      //   if (counterResult[j] > 1) {
+      //     return true;
+      //   }
+      // }
+      // return false;
+
+      var colConflict = false;
+
+      for (var i = 0; i < this.get(0).length; i ++) {
+        if (this.hasColConflictAt(i)) {
+          colConflict = true;
+        }
+      }
+
+      return colConflict;
+
     },
 
 
