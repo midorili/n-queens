@@ -204,7 +204,6 @@
 
       for (var i = 0; i < this.rows().length; i++) {
         for (var j = 0; j < this.rows()[i].length; j++) {
-          console.log(this.rows()[i]);
           if (this.rows()[i][j] === 1) {
             var currentFound = this._getFirstRowColumnIndexForMajorDiagonalOn(i, j);
             if (this.hasMajorDiagonalConflictAt(currentFound)) {
@@ -240,7 +239,6 @@
     hasAnyMinorDiagonalConflicts: function() {
       for (var i = 0; i < this.rows().length; i++) {
         for (var j = 0; j < this.rows()[i].length; j++) {
-          console.log(this.rows()[i]);
           if (this.rows()[i][j] === 1) {
             var currentFound = this._getFirstRowColumnIndexForMinorDiagonalOn(i, j);
             if (this.hasMinorDiagonalConflictAt(currentFound)) {
