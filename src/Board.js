@@ -157,8 +157,7 @@
       // return false;
 
       var colConflict = false;
-
-      for (var i = 0; i < this.get(0).length; i ++) {
+      for (var i = 0; i < this.rows().length; i ++) {
         if (this.hasColConflictAt(i)) {
           colConflict = true;
         }
